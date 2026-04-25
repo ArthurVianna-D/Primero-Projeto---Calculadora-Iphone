@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Minha Calculadora</title>
+    <title>Calculadora</title>
 </head>
 <body>
     <h1>Calculadora simples</h1>
-    <p>Meu primeiro projeto no GitHub 🚀</p>
+
+    <input type="number" id="n1">
+    <input type="number" id="n2">
+
+    <button onclick="somar()">Somar</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function somar() {
+            let a = Number(document.getElementById("n1").value);
+            let b = Number(document.getElementById("n2").value);
+            document.getElementById("resultado").innerText = a + b;
+        }
+    </script>
 </body>
 </html>
