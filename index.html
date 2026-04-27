@@ -1,24 +1,121 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Calculadora</title>
+<meta charset="UTF-8">
+<title>Calculadora</title>
+
+<style>
+body{
+font-family: Arial;
+background: linear-gradient(to right,#4facfe,#00f2fe);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.caixa{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+text-align:center;
+width:350px;
+}
+
+h1{
+margin-bottom:10px;
+}
+
+p{
+color:gray;
+}
+
+input{
+width:120px;
+padding:10px;
+margin:10px;
+font-size:18px;
+}
+
+button{
+padding:12px 18px;
+margin:5px;
+border:none;
+background:#4facfe;
+color:white;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#228be6;
+}
+
+#resultado{
+margin-top:20px;
+font-size:28px;
+font-weight:bold;
+color:#333;
+}
+</style>
+
 </head>
+
 <body>
-    <h1>Calculadora simples</h1>
 
-    <input type="number" id="n1">
-    <input type="number" id="n2">
+<div class="caixa">
 
-    <button onclick="somar()">Somar</button>
+<h1>Calculadora simples</h1>
 
-    <p id="resultado"></p>
+<p>Digite dois números:</p>
 
-    <script>
-        function somar() {
-            let a = Number(document.getElementById("n1").value);
-            let b = Number(document.getElementById("n2").value);
-            document.getElementById("resultado").innerText = a + b;
-        }
-    </script>
+<input type="number" id="n1">
+<input type="number" id="n2">
+
+<br>
+
+<button onclick="calcular('+')">+</button>
+<button onclick="calcular('-')">-</button>
+<button onclick="calcular('*')">×</button>
+<button onclick="calcular('/')">÷</button>
+
+<p id="resultado">Resultado:</p>
+
+</div>
+
+<script>
+
+function calcular(op){
+
+let a = Number(document.getElementById("n1").value);
+let b = Number(document.getElementById("n2").value);
+
+if(isNaN(a) || isNaN(b)){
+document.getElementById("resultado").innerText="Digite valores válidos";
+return;
+}
+
+let r;
+
+if(op=="+") r=a+b;
+if(op=="-") r=a-b;
+if(op=="*") r=a*b;
+
+if(op=="/"){
+if(b==0){
+document.getElementById("resultado").innerText="Não pode dividir por zero";
+return;
+}
+r=a/b;
+}
+
+document.getElementById("resultado").innerText="Resultado: " + r;
+
+}
+
+</script>
+
 </body>
 </html>
